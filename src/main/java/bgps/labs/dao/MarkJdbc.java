@@ -29,7 +29,6 @@ public class MarkJdbc
 
     private Mark mapMark(ResultSet rs, int i) throws SQLException
     {
-
         return new Mark(
                 rs.getInt("id"),
                 rs.getString("name"),
