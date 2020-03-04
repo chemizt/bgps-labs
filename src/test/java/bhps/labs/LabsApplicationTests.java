@@ -1,4 +1,4 @@
-package bgps.labs;
+package bhps.labs;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

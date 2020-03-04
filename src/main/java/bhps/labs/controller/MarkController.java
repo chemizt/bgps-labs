@@ -1,7 +1,7 @@
-package bgps.labs.controller;
+package bhps.labs.controller;
 
-import bgps.labs.dao.MarkJdbc;
-import bgps.labs.model.Mark;
+import bhps.labs.dao.MarkJdbc;
+import bhps.labs.model.Mark;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;

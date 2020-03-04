@@ -1,6 +1,7 @@
-package bgps.labs.dao;
+package bhps.labs.dao;
 
-import bgps.labs.model.StudyGroup;
+import bhps.labs.model.StudyGroup;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -29,7 +30,22 @@ public class StudyGroupJdbc
         return jdbcTemplate.queryForObject("SELECT * FROM \"study_group\"", this::mapAllStudyGroups);
     }
 
-    private StudyGroup mapStudyGroup(ResultSet rs, int i) throws SQLException
+    public int add(@NotNull StudyGroup sG)
+    {
+        return jdbcTemplate.update("INSERT INTO \"study_group\" (\"name\") VALUES (?)", sG.getName());
+    }
+
+    public int update(@NotNull StudyGroup sG)
+    {
+        return jdbcTemplate.update("UPDATE \"study_group\" SET \"name\" = ? WHERE \"id\" = ?", sG.getName(), sG.getId());
+    }
+
+    public int delete(int id)
+    {
+        return jdbcTemplate.update("DELETE FROM \"study_group\" WHERE \"id\" = ?", id);
+    }
+
+    private StudyGroup mapStudyGroup(@NotNull ResultSet rs, int i) throws SQLException
     {
         return new StudyGroup(
                 rs.getInt("id"),
@@ -37,7 +53,7 @@ public class StudyGroupJdbc
         );
     }
 
-    private List<StudyGroup> mapAllStudyGroups(ResultSet rs, int i) throws SQLException
+    private List<StudyGroup> mapAllStudyGroups(@NotNull ResultSet rs, int i) throws SQLException
     {
         List<StudyGroup> groupList = new ArrayList<>();
 

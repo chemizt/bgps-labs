@@ -1,4 +1,4 @@
-package bgps.labs.model;
+package bhps.labs.model;
 
 public class StudyGroup
 {
@@ -9,6 +9,10 @@ public class StudyGroup
     {
         this.id = id;
         this.name = name;
+    }
+
+    public StudyGroup()
+    {
     }
 
     public int getId()

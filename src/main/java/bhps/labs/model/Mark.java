@@ -1,4 +1,4 @@
-package bgps.labs.model;
+package bhps.labs.model;
 
 public class Mark
 {

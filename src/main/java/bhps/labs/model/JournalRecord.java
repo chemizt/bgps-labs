@@ -1,15 +1,15 @@
-package bgps.labs.model;
+package bhps.labs.model;
 
 public class JournalRecord
 {
     private int id;
-    private int studentId;
-    private int studyPlanId;
-    private boolean inTime;
-    private int count;
-    private int markId;
+    private Integer studentId;
+    private Integer studyPlanId;
+    private Boolean inTime;
+    private Integer count;
+    private Integer markId;
 
-    public JournalRecord(int id, int studentId, int studyPlanId, boolean inTime, int count, int markId)
+    public JournalRecord(int id, Integer studentId, Integer studyPlanId, Boolean inTime, Integer count, Integer markId)
     {
         this.id = id;
         this.studentId = studentId;
@@ -17,6 +17,10 @@ public class JournalRecord
         this.inTime = inTime;
         this.count = count;
         this.markId = markId;
+    }
+
+    public JournalRecord()
+    {
     }
 
     public int getId()
@@ -29,52 +33,52 @@ public class JournalRecord
         this.id = id;
     }
 
-    public int getStudentId()
+    public Integer getStudentId()
     {
         return studentId;
     }
 
-    public void setStudentId(int studentId)
+    public void setStudentId(Integer studentId)
     {
         this.studentId = studentId;
     }
 
-    public int getStudyPlanId()
+    public Integer getStudyPlanId()
     {
         return studyPlanId;
     }
 
-    public void setStudyPlanId(int studyPlanId)
+    public void setStudyPlanId(Integer studyPlanId)
     {
         this.studyPlanId = studyPlanId;
     }
 
-    public boolean isInTime()
+    public Boolean isInTime()
     {
         return inTime;
     }
 
-    public void setInTime(boolean inTime)
+    public void setInTime(Boolean inTime)
     {
         this.inTime = inTime;
     }
 
-    public int getCount()
+    public Integer getCount()
     {
         return count;
     }
 
-    public void setCount(int count)
+    public void setCount(Integer count)
     {
         this.count = count;
     }
 
-    public int getMarkId()
+    public Integer getMarkId()
     {
         return markId;
     }
 
-    public void setMarkId(int markId)
+    public void setMarkId(Integer markId)
     {
         this.markId = markId;
     }

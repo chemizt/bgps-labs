@@ -1,20 +1,24 @@
-package bgps.labs.model;
+package bhps.labs.model;
 
 public class Student
 {
     private int id;
-    private int studyGroupId;
+    private Integer studyGroupId;
     private String surName;
     private String name;
     private String secondName;
 
-    public Student(int id, int studyGroupId, String surName, String name, String secondName)
+    public Student(Integer id, Integer studyGroupId, String surName, String name, String secondName)
     {
         this.id = id;
         this.studyGroupId = studyGroupId;
         this.surName = surName;
         this.name = name;
         this.secondName = secondName;
+    }
+
+    public Student()
+    {
     }
 
     public int getId()
@@ -27,12 +31,12 @@ public class Student
         this.id = id;
     }
 
-    public int getStudyGroupId()
+    public Integer getStudyGroupId()
     {
         return studyGroupId;
     }
 
-    public void setStudyGroupId(int studyGroupId)
+    public void setStudyGroupId(Integer studyGroupId)
     {
         this.studyGroupId = studyGroupId;
     }

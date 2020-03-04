@@ -1,10 +1,8 @@
-package bgps.labs.controller;
+package bhps.labs.controller;
 
-import bgps.labs.dao.JournalRecordJdbc;
-import bgps.labs.model.JournalRecord;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import bhps.labs.dao.JournalRecordJdbc;
+import bhps.labs.model.JournalRecord;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,6 +38,24 @@ public class JournalRecordController
     public List<JournalRecord> getJournalRecordsByStudyPlan(@PathVariable int id)
     {
         return journalRecordJdbc.getAllByStudyPlan(id);
+    }
+
+    @PostMapping("/journal/add")
+    public int addNewRecord(@RequestBody JournalRecord jR)
+    {
+        return journalRecordJdbc.addJournalRecord(jR);
+    }
+
+    @PostMapping("/journal/update")
+    public int updateRecord(@RequestBody JournalRecord jR)
+    {
+        return journalRecordJdbc.updateJournalRecord(jR);
+    }
+
+    @DeleteMapping("/journal/delete/{id}")
+    public int deleteRecordById(@PathVariable int id)
+    {
+        return journalRecordJdbc.deleteJournalRecord(id);
     }
 
 }

@@ -1,6 +1,7 @@
-package bgps.labs.dao;
+package bhps.labs.dao;
 
-import bgps.labs.model.Mark;
+import bhps.labs.model.Mark;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +28,7 @@ public class MarkJdbc
         return jdbcTemplate.queryForObject("SELECT * FROM \"mark\" WHERE \"id\" = ?", Mark.class, mark);
     }
 
-    private Mark mapMark(ResultSet rs, int i) throws SQLException
+    private Mark mapMark(@NotNull ResultSet rs, int i) throws SQLException
     {
         return new Mark(
                 rs.getInt("id"),
