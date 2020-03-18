@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import Request from "./Services/Request";
 import './App.css';
 
-import {Table} from "react-bootstrap";
+import {Table, Button} from "react-bootstrap";
 
 class JournalTable extends React.Component {
   render() {
@@ -28,13 +28,9 @@ class JournalTable extends React.Component {
                     var PrIS;
                     var SII;
                     journal.map(row => {
-                        if (row.studentId !== student.id)
-
-                        else
-                        if (row.studyPlanId === 1)
-                            PrIS = 6 - row.markId;
-                        else if (row.studyPlanId === 2)
-                            SII = 6 - row.markId;
+                        if (row.studentId !== student.id) return;
+                        else if (row.studyPlanId === 1) PrIS = 6 - row.markId;
+                        else if (row.studyPlanId === 2) SII = 6 - row.markId;
 
                     });
                     let color1 = PrIS < 3 ? "text-danger" : "";
@@ -62,59 +58,54 @@ class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            activeGroup: 1,
+            activeGroup: null,
             students: null,
             journal: null
         };
+        this.requestFromServer = this.requestFromServer.bind(this);
     }
 
-    /*students = [
+    componentDidMount() {
+        this.requestFromServer();
+    }
 
-        [
-            {name: 'Иванов Иван Иванович', markPrIS: 5, markSII: 4},
-            {name: 'Петров Пётр Петрович', markPrIS: 3, markSII: 2}
-        ],
-        [
-            {name: 'Валиева Лидия Павловна', markPrIS: 3, markSII: 5},
-            {name: 'Илюшин Игорь Витальевич', markPrIS: 5, markSII: 5}
-        ],
-        [
-            {name: 'Голутвин Семён Юрьевич', markPrIS: 4, markSII: 2},
-            {name: 'Сёмина Анна Николаевна', markPrIS: 3, markSII: 5}
-        ]
-    ];*/
+    requestFromServer() {
+        Request.getJournal().then(j => this.setState({journal: j}));
+        Request.getStudents().then(s => this.setState({students: s}));
+    }
 
-  componentDidMount() {
-    Request.getJournal().then(j => this.setState({journal: j}));
-    Request.getStudents().then(s => this.setState({students: s}));
-  }
-  render() {
-    return (
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <br/><br/>
-              <div>
-                  {this.state.students
-                      ? <JournalTable
-                          students={this.state.students}
-                          group={this.state.activeGroup}
-                          journal={this.state.journal}/>
-                      : null}
-                  <button onClick={() => {
-                      this.setState({activeGroup: 1});
-                  }}>
-                      ИКБО-03-16
-                  </button>
-                  <button style={{marginLeft: 10}} onClick={() => {
-                      this.setState({activeGroup: 2});
-                  }}>
-                      ИКБО-02-16
-                  </button>
-              </div>
-          </header>
-        </div>
-    );
-  }
+    componentWillUnmount() {
+        this.setState({journal: null});
+        this.setState({students: null});
+    }
+
+    render() {
+        return (
+            <div className="App">
+              <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <br/><br/>
+                  <div>
+                      {this.state.students
+                          ? <JournalTable
+                              students={this.state.students}
+                              group={this.state.activeGroup}
+                              journal={this.state.journal}/>
+                          : null}
+                      <Button variant="primary" size="lg" onClick={() => {
+                          this.setState({activeGroup: 1});
+                      }}>
+                          ИКБО-03-16
+                      </Button>
+                      <Button variant="primary" size="lg" style={{marginLeft: 10}} onClick={() => {
+                          this.setState({activeGroup: 2});
+                      }}>
+                          ИКБО-02-16
+                      </Button>
+                  </div>
+              </header>
+            </div>
+        );
+      }
 }
 export default App;
