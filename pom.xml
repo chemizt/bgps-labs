@@ -12,7 +12,7 @@
     <artifactId>labs</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>labs</name>
-    <description>BGPS Lab Assignments</description>
+    <description>BHPS Lab Assignments</description>
 
     <properties>
         <java.version>11</java.version>
@@ -49,6 +49,16 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>net.progruzovik.bus</groupId>
+            <artifactId>bus-datasource-spring-jdbc</artifactId>
+            <version>1.0-DEAN</version>
+        </dependency>
+        <dependency>
+            <groupId>net.progruzovik.bus</groupId>
+            <artifactId>bus-messaging-spring-rest</artifactId>
+            <version>1.0-DEAN</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains</groupId>

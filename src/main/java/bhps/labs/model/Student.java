@@ -4,15 +4,15 @@ public class Student
 {
     private int id;
     private Integer studyGroupId;
-    private String surName;
+    private String surname;
     private String name;
     private String secondName;
 
-    public Student(Integer id, Integer studyGroupId, String surName, String name, String secondName)
+    public Student(Integer id, Integer studyGroupId, String surname, String name, String secondName)
     {
         this.id = id;
         this.studyGroupId = studyGroupId;
-        this.surName = surName;
+        this.surname = surname;
         this.name = name;
         this.secondName = secondName;
     }
@@ -51,14 +51,14 @@ public class Student
         this.name = name;
     }
 
-    public String getSurName()
+    public String getSurname()
     {
-        return surName;
+        return surname;
     }
 
-    public void setSurName(String surName)
+    public void setSurname(String surname)
     {
-        this.surName = surName;
+        this.surname = surname;
     }
 
     public String getSecondName()

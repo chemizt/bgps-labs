@@ -31,6 +31,11 @@ public class StudentJdbc
         return jdbcTemplate.queryForObject("SELECT * FROM \"student\"", this::mapAllStudents);
     }
 
+    public List<Student> getAllLocal()
+    {
+        return jdbcTemplate.queryForObject("SELECT * FROM \"student_local\"", this::mapAllStudents);
+    }
+
     public List<Student> getAllByGroup(int id)
     {
         return jdbcTemplate.queryForObject("SELECT * FROM \"student\" WHERE \"study_group_id\" = ?", this::mapAllStudents, id);
@@ -38,15 +43,15 @@ public class StudentJdbc
 
     public int add(@NotNull Student stud)
     {
-        return jdbcTemplate.update("INSERT INTO \"student\" (\"surname\", \"name\", \"second_name\", \"study_group_id\") VALUES (?, ?, ?, ?)", stud.getSurName(), stud.getName(), stud.getSecondName(), stud.getStudyGroupId());
+        return jdbcTemplate.update("INSERT INTO \"student\" (\"surname\", \"name\", \"second_name\", \"study_group_id\") VALUES (?, ?, ?, ?)", stud.getSurname(), stud.getName(), stud.getSecondName(), stud.getStudyGroupId());
     }
 
     public int update(@NotNull Student stud)
     {
         StringBuilder sqlRequest = new StringBuilder("UPDATE \"student\" SET ");
 
-        if (!StringUtils.isEmpty(stud.getSurName()))
-            sqlRequest.append("surname = '").append(stud.getSurName()).append("', ");
+        if (!StringUtils.isEmpty(stud.getSurname()))
+            sqlRequest.append("surname = '").append(stud.getSurname()).append("', ");
         if (!StringUtils.isEmpty(stud.getName())) sqlRequest.append("name = '").append(stud.getName()).append("', ");
         if (!StringUtils.isEmpty(stud.getSecondName()))
             sqlRequest.append("second_name = '").append(stud.getSecondName()).append("', ");
